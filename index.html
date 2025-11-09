@@ -168,9 +168,24 @@ form.addEventListener('submit', async e => {
     submitBtn.style.background = "#2ecc71";
     successMsg.style.display = 'block';
 
-    // رسالة ماسنجر جاهزة
+    // تجهيز بيانات العميل للرسالة
+    const name = data.name || "";
+    const phone = data.phone || "";
+    const city = data.city || "";
+    const offer = data.offer || "";
+    const address = data.address || "";
+
+    // الرسالة الكاملة اللي هتتبعت على الماسنجر
     const message = encodeURIComponent(
-      "👋 مرحبًا! من فضلك اختاري أحد الخيارات التالية:\n\n1️⃣ أريد تأكيد الطلب ✅\n2️⃣ عندي استفسار 💬"
+      `👋 مرحبًا! تم تسجيل طلب جديد:\n\n` +
+      `الاسم: ${name}\n` +
+      `رقم الهاتف: ${phone}\n` +
+      `المحافظة: ${city}\n` +
+      `العنوان: ${address}\n` +
+      `العرض: ${offer}\n\n` +
+      `من فضلك اختاري أحد الخيارات التالية:\n` +
+      `1️⃣ أريد تأكيد الطلب ✅\n` +
+      `2️⃣ عندي استفسار 💬`
     );
 
     // تحويل إلى ماسنجر الصفحة بعد ثانية واحدة
