@@ -23,6 +23,7 @@ fbq('track', 'PageView');
 </script>
 <!-- End Facebook Pixel Code -->
 
+
 <style>
 body {font-family:'Cairo',sans-serif;margin:0;background:#fff;color:#222;direction:rtl;}
 header {background:#b22222;color:white;text-align:center;padding:16px;}
@@ -39,7 +40,6 @@ button:disabled {opacity:0.8;cursor:not-allowed;}
 footer {text-align:center;color:#777;font-size:14px;padding:20px;}
 </style>
 </head>
-
 <body>
 <header><h1>مجموعة كارسيل الأصلية لإصلاح الشعر التالف</h1></header>
 
@@ -51,12 +51,12 @@ footer {text-align:center;color:#777;font-size:14px;padding:20px;}
 <section class="content">
 <p style="text-align:center;font-weight:bold;color:#b22222;">✨ اختاري العرض المناسب قبل إدخال بياناتك ✨</p>
 
-<div class="offer-card selected" data-offer="599">
+<div class="offer-card selected" data-offer="الماسك + السيروم — 599ج">
 <h2>💆‍♀️ عرض 1: الماسك + السيروم</h2>
-<p>599 جنيه فقط – شامل الشحن عند الدفع عند الاستلام</p>
+<p>599 جنيه فقط – خصم خاص لفترة محدودة</p>
 </div>
 
-<div class="offer-card" data-offer="799">
+<div class="offer-card" data-offer="المجموعة الكاملة — 799ج">
 <h2>🌟 عرض 2: المجموعة الكاملة</h2>
 <p>799 جنيه فقط – خصم خاص لفترة محدودة</p>
 <div style="background:#fdf2f2;padding:6px;border-radius:8px;">تحتوي على: الماسك + السيروم + الشامبو + البلسم</div>
@@ -69,18 +69,17 @@ footer {text-align:center;color:#777;font-size:14px;padding:20px;}
 <input type="hidden" name="offer" id="selectedOffer" value="الماسك + السيروم — 599ج">
 <input type="text" name="name" placeholder="الاسم الكامل" required>
 <input type="text" name="phone" placeholder="رقم الهاتف" required>
+
 <select id="city" name="city" required>
   <option value="" disabled selected>اختر المحافظة</option>
   <option value="القاهرة">القاهرة</option>
   <option value="الجيزة">الجيزة</option>
   <option value="الإسكندرية">الإسكندرية</option>
-  <option value="الدقهلية">الدقهلية</option>
   <option value="الشرقية">الشرقية</option>
   <option value="الغربية">الغربية</option>
   <option value="المنوفية">المنوفية</option>
   <option value="القليوبية">القليوبية</option>
-  <option value="الفيوم">الفيوم</option>
-  <option value="بني سويف">بني سويف</option>
+  <option value="الدقهلية">الدقهلية</option>
   <option value="المنيا">المنيا</option>
   <option value="أسيوط">أسيوط</option>
   <option value="سوهاج">سوهاج</option>
@@ -98,26 +97,16 @@ footer {text-align:center;color:#777;font-size:14px;padding:20px;}
   <option value="جنوب سيناء">جنوب سيناء</option>
   <option value="البحر الأحمر">البحر الأحمر</option>
   <option value="الوادي الجديد">الوادي الجديد</option>
+  <option value="بني سويف">بني سويف</option>
+  <option value="الفيوم">الفيوم</option>
 </select>
 
 <textarea name="address" placeholder="العنوان الكامل" required></textarea>
 
 <button type="submit" id="submitBtn">✔️ تأكيد الطلب الآن</button>
 
-<p style="
-  font-size: 17px;
-  color: #d32f2f;
-  background: #fff3cd;
-  border: 1px solid #f0ad4e;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: 700;
-  line-height: 1.6;
-  margin-top: 10px;
-">
-⚠️ بعد تأكيد الطلب سيتم تحويلك تلقائيًا لرسائل الصفحة للتحدث مع خدمة العملاء حول اى استفسار لديكم او لتاكيد الطلب من خلال خدمة العملاء
-</p>
+
+
 <div class="success" id="successMsg">✅ تم استلام طلبك بنجاح! سيتم التواصل معك قريبًا.</div>
 </form>
 </div>
@@ -126,83 +115,49 @@ footer {text-align:center;color:#777;font-size:14px;padding:20px;}
 <footer><p>© 2025 Karseell Egypt — جميع الحقوق محفوظة.</p></footer>
 
 <script>
-const offers = document.querySelectorAll('.offer-card');
-const selectedOffer = document.getElementById('selectedOffer');
-const form = document.getElementById('orderForm');
-const successMsg = document.getElementById('successMsg');
-const submitBtn = document.getElementById('submitBtn');
+const offers=document.querySelectorAll('.offer-card');
+const selectedOffer=document.getElementById('selectedOffer');
+const form=document.getElementById('orderForm');
+const successMsg=document.getElementById('successMsg');
+const submitBtn=document.getElementById('submitBtn');
 
-// اختيار العرض
-offers.forEach(offer => {
-  offer.addEventListener('click', () => {
-    offers.forEach(o => o.classList.remove('selected'));
+offers.forEach(offer=>{
+  offer.addEventListener('click',()=>{
+    offers.forEach(o=>o.classList.remove('selected'));
     offer.classList.add('selected');
-    selectedOffer.value = offer.dataset.offer;
+    selectedOffer.value=offer.dataset.offer;
   });
 });
 
-// عند تأكيد الطلب
-form.addEventListener('submit', async e => {
+form.addEventListener('submit',async e=>{
   e.preventDefault();
+  submitBtn.disabled=true;
+  submitBtn.textContent="⏳ جاري تأكيد الطلب... برجاء الانتظار";
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = "⏳ جاري تأكيد الطلب... برجاء الانتظار";
-
-  const data = Object.fromEntries(new FormData(form).entries());
-
-  try {
-    fbq('track', 'Purchase', { value: 599, currency: 'EGP' });
-  } catch (e) {
-    console.log("FB Pixel error:", e);
-  }
+  const data=Object.fromEntries(new FormData(form).entries());
 
   try {
-    await fetch('https://script.google.com/macros/s/AKfycby2wdFiSyQkS2NbIGAHHXOpOP2WMmRYn2GknSJ71hGAjkthy530GfMebjwAZZd2_JjMnQ/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+    fbq('track','Purchase',{value:599,currency:'EGP'});
+  } catch(e){}
 
-    submitBtn.textContent = "✅ تم تأكيد طلبك بنجاح!";
-    submitBtn.style.background = "#2ecc71";
-    successMsg.style.display = 'block';
+  // إرسال البيانات إلى Google Sheet
+  await fetch('https://script.google.com/macros/s/AKfycby2wdFiSyQkS2NbIGAHHXOpOP2WMmRYn2GknSJ71hGAjkthy530GfMebjwAZZd2_JjMnQ/exec',{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  });
 
-    // تجهيز بيانات العميل للرسالة
-    const name = data.name || "";
-    const phone = data.phone || "";
-    const city = data.city || "";
-    const offer = data.offer || "";
-    const address = data.address || "";
+  // تحديث شكل الزر ورسالة النجاح
+  submitBtn.textContent="✅ تم تأكيد طلبك بنجاح!";
+  submitBtn.style.background="#2ecc71";
+  successMsg.style.display='block';
 
-    // الرسالة الكاملة اللي هتتبعت على الماسنجر
-    const message = encodeURIComponent(
-      `👋 مرحبًا! تم تسجيل طلب جديد:\n\n` +
-      `الاسم: ${name}\n` +
-      `رقم الهاتف: ${phone}\n` +
-      `المحافظة: ${city}\n` +
-      `العنوان: ${address}\n` +
-      `العرض: ${offer}\n\n` +
-      `من فضلك اختاري أحد الخيارات التالية:\n` +
-      `1️⃣ أريد تأكيد الطلب ✅\n` +
-      `2️⃣ عندي استفسار 💬`
-    );
+  
 
-    // تحويل إلى ماسنجر الصفحة بعد ثانية واحدة
-    setTimeout(() => {
-      window.location.href = "https://m.me/karseellmasr2?text=" + message;
-    }, 1000);
-
-    form.reset();
-
-  } catch (error) {
-    alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
-    submitBtn.disabled = false;
-    submitBtn.textContent = "✔️ تأكيد الطلب الآن";
-  }
+  form.reset();
 });
 </script>
-
 
 </body>
 </html>
