@@ -56,7 +56,14 @@ select{
 }
 input, textarea, select { box-sizing: border-box; }
 
-select { appearance: none; }
+select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  padding-right:14px;
+  padding-left:40px; /* نعوّض مكان السهم */
+}
 
 button{
   width:100%;
