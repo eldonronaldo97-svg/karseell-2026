@@ -36,10 +36,18 @@ header {background:#5a0f1b;color:#f2c94c;text-align:center;padding:16px;}
 .content {max-width:600px;margin:auto;padding:20px;}
 .offer-card {background:#f2c94c; border:2px solid #f2c94c;border-radius:10px;padding:12px;text-align:center;margin-bottom:12px;cursor:pointer;}
 .offer-card.selected {border-color:#e9dfc7;background:#f2c94c}
-.form-section {background:#e9dfc7;padding:20px;border-radius:12px;border:1px solid #e9dfc7;}
-input,
-textarea{
+.form-section{
+  background:#e9dfc7;
+  padding:20px;
+  border-radius:12px;
+}
+
+/* توسيط كل الخانات */
+.form-section input,
+.form-section textarea,
+.form-section select{
   width:100%;
+  max-width:420px;
   margin:0 auto 12px;
   display:block;
 
@@ -52,33 +60,23 @@ textarea{
   direction:rtl;
   background:#fff;
 }
-.select-wrap{
-  max-width:420px;
-  margin:0 auto 12px;
-}
 
-.select-wrap select{
-  width:100%;
-}
-.select-wrap textarea{
-  width:100%;
-}  
-
-
-button{
+/* زر الطلب */
+.form-section button{
   width:100%;
   max-width:420px;
-  margin:10px auto 0;
+  margin:15px auto 0;
   display:block;
+
   background:#b22222;
-  color:white;
+  color:#fff;
   padding:14px;
   border:none;
   border-radius:10px;
   font-size:18px;
   cursor:pointer;
-  transition:all 0.3s ease;
 }
+
 
 button:disabled {opacity:0.8;cursor:not-allowed;}
 .success {display:none;text-align:center;color:green;font-weight:bold;margin-top:10px;}
@@ -226,9 +224,7 @@ src="data:image/webp;base64,UklGRl6xAABXRUJQVlA4IFKxAABQ/wKdASrPAs8CPjEYikQiIaEi
 <option value="سوهاج">سوهاج</option>
 </select>
 
-<div class="select-wrap">
-  <textarea name="address" placeholder="العنوان الكامل" required></textarea>
-</div>
+<textarea name="address" placeholder="العنوان الكامل" required></textarea>
 
 <button type="submit" id="submitBtn">✔️ تأكيد الطلب الآن</button>
 <div class="success" id="successMsg">
